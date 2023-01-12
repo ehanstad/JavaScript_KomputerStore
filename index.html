@@ -13,15 +13,17 @@
         <div id="container-inner">
             <div id="bank-container" class="box">
                 <h3>Joe Banker</h3>
-                <p>Balance</p>
-                <button>Get a loan</button>
+                <p id="balance"></p>
+                <p id="loan-debt"></p>
+                <button id="loan-btn">Get a loan</button>
             </div>
 
             <div id="work-container" class="box">
                 <h3>Work</h3>
-                <p>Pay</p>
-                <button>Bank</button>
-                <button>Work</button>
+                <p id="salary"></p>
+                <button id="bank-btn">Bank</button>
+                <button id="work-btn">Work</button>
+                <button id="repay-loan-btn">Repay loan</button>
             </div>
 
             <div id="search-container" class="box">
@@ -29,6 +31,7 @@
                     <h3>Laptops</h3>
                     <select id="laptops"></select>
                     <h3 id="laptop-features">Features</h3>
+                    <p id="laptop-features-text"></p>
                 </div>
             </div>
         </div>
@@ -36,13 +39,19 @@
         <div id="information-container">
             <div id="information-section">
                 <img id="laptop-img">
-                <span id="laptop-title"></span>
-                <p id="laptop-discription"></p>
-                <p id="laptop-price"></p>
-                <button>buy now</button>
+                <div id="laptop-info">
+                    <h3 id="laptop-title"></h3>
+                    <p id="laptop-discription"></p>
+                </div>
+                <div id="laptop-pay">
+                    <h3 id="laptop-price"></h3>
+                    <button id="buy-btn">Buy now</button>
+                </div>
             </div>
         </div>
     </div>
+    <script src="bank.js"></script>
     <script src="komputer.js"></script>
+    <script src="work.js"></script>
 </body>
 </html>

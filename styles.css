@@ -39,9 +39,77 @@ p {
 .box {
     height: 75%;
     width: 20%;
-    background-color: beige;
+    background-color: rgb(225, 225, 218);
+    border: 1px solid black;
+    padding: 3%;
+    margin: 3%;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px black;
+}
+#information-container {
+    flex: 0.4;
+    height: 50%;
+    width: 85%;
+    background-color: rgb(225, 225, 218);
     border: 1px solid black;
     padding: 3%;
     border-radius: 20px;
     box-shadow: 2px 2px 2px black;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    margin: 10px;
+}
+#information-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+#laptop-img {
+    flex: 0.3;
+    width: 200px;
+    align-self: center;
+}
+#laptop-info {
+    flex: 0.3;
+    width: 30%;
+    align-self: center;
+}
+#laptop-pay {
+    flex: 0.3;
+    width: 30%;
+    align-self: center;
+}
+h3 {
+    font-size: 20px;
+}
+
+button {
+    font-size: 17px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+}
+#loan-btn {
+    background-color: aquamarine;
+}
+#bank-btn {
+    background-color: rgb(230, 223, 131);
+}
+#work-btn {
+    background-color: cornflowerblue;
+    color: white;
+}
+#buy-btn {
+    background-color: rgb(27, 10, 140);
+    color: white;
+}
+#repay-loan-btn {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    display: none;
+}
+#loan-dept {
+    display: none;
 }
