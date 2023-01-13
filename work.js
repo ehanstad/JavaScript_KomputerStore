@@ -8,7 +8,6 @@ let currentSalary = 0.0;
 const handleBankTransfer = () => {
     const loanAmount = getLoanDebt();
     if (loanAmount > 0) {
-        console.log("You got a loan");
         const salaryToLoan = currentSalary * 0.1;
         currentSalary -= salaryToLoan;
         if (salaryToLoan > loanAmount) {
@@ -18,7 +17,6 @@ const handleBankTransfer = () => {
             changeLoanDebt(loanAmount-salaryToLoan)
         }
     }
-    console.log("current salary: " + currentSalary);
     changeBalance(currentSalary);
     currentSalary = 0.0;
     changeSalaryOnScreen();
@@ -30,7 +28,6 @@ const handleWorkPayment = () => {
 }
 
 const handleRepayLoan = () => {
-    console.log("log");
     const loanAmount = getLoanDebt();
     const extra = currentSalary - loanAmount;
     if (extra > 0) {
@@ -51,9 +48,7 @@ const toggleRepayLoanBtn = () => {
     }
 }
 
-const changeSalaryOnScreen = () => {
-    salaryElement.innerText = "Pay\t" + currentSalary + "SEK";
-}
+const changeSalaryOnScreen = () => salaryElement.innerText = "Pay:\t" + currentSalary + " SEK";
 
 bankBtnElement.addEventListener("click", handleBankTransfer);
 workBtnElement.addEventListener("click", handleWorkPayment);

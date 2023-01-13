@@ -5,26 +5,16 @@ const loanDebtElement = document.getElementById("loan-debt");
 let currentBalance = 0.0;
 let currentLoanDebt = 0.0;
 
-const getLoanDebt = () => {
-    return currentLoanDebt;
-}
-
-const getCurrentBalance = () => {
-    return currentBalance;
-}
+const getLoanDebt = () => currentLoanDebt;
+const getCurrentBalance = () => currentBalance;
 
 const changeBalance = difference => {
     currentBalance += parseFloat(difference);;
     changeBalanceOnScreen();
 }
 
-const changeBalanceOnScreen = () => {
-    balanceElement.innerText = "Balance:\t" + currentBalance + " SEK";
-}
-
-const changeDeptOnScreen = () => {
-    loanDebtElement.innerText = "Debt: " + currentLoanDebt + " SEK";
-}
+const changeBalanceOnScreen = () => balanceElement.innerText = "Balance:\t" + currentBalance + " SEK";
+const changeDeptOnScreen = () => loanDebtElement.innerText = "Debt: " + currentLoanDebt + " SEK";
 
 const changeLoanDebt = newLoanDebt => {
     currentLoanDebt = newLoanDebt;
@@ -37,7 +27,6 @@ const changeLoanDebt = newLoanDebt => {
 
 const getLoanHandler = () => {
     let loanAmount = window.prompt('Please enter amount you would like to loan (SEK):');
-    console.log(loanAmount);
     toggleRepayLoanBtn();
     if (currentLoanDebt <= 0 && currentBalance * 2 >= loanAmount) {
         addLoan(loanAmount);

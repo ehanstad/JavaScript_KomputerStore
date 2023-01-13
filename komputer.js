@@ -10,6 +10,7 @@ const computerPriceElement = document.getElementById("laptop-price");
 const buyBtnElement = document.getElementById("buy-btn");
 
 let computers = [];
+let selectedComputer = {};
 
 fetch("https://hickory-quilled-actress.glitch.me/computers")
     .then(response => response.json())
@@ -23,13 +24,15 @@ const addComputersToInventory = (computers) => {
         computerOptionElement.value = computer.id;
         computerOptionElement.appendChild(document.createTextNode(computer.title));
         computerSelectElement.appendChild(computerOptionElement);
-    });    
+    });
+    selectedComputer = computers[0];
+    changeSalaryOnScreen();
+    changeBalanceOnScreen();
+    changeFeatures(selectedComputer);
+    changeSelectedComputerOnScreen();
 }
 
-const handleComputerInventoryChange = e => {
-    const selectedComputer = computers[e.target.selectedIndex];
-
-    changeFeatures(selectedComputer);
+const changeSelectedComputerOnScreen = () => {
     let imgSrc = "https://hickory-quilled-actress.glitch.me/" + selectedComputer.image;
     computerImgElement.src = imgSrc;
     computerTitleElement.innerText = selectedComputer.title;
@@ -37,11 +40,17 @@ const handleComputerInventoryChange = e => {
     computerPriceElement.innerText = selectedComputer.price + " SEK";
 }
 
+const handleComputerInventoryChange = e => {
+    selectedComputer = computers[e.target.selectedIndex];
+
+    changeFeatures(selectedComputer);
+    changeSelectedComputerOnScreen();
+}
+
 const handleBuyLaptop = () => {
     currentBalance = getCurrentBalance();
     laptopPrice = parseFloat(computerPriceElement.innerText.split(" ")[0]);
     laptopTitle = computerTitleElement.innerText;
-    console.log(laptopPrice);
     if (currentBalance >= laptopPrice) {
         changeBalance(-laptopPrice);
         alert(`Congrats you are the owner of a ${laptopTitle}`);

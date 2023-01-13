@@ -18,7 +18,7 @@ p {
 #header {
     display: flex;
     flex: 0.2;
-    background-color:darkslategrey;
+    background-color:#05445E;
     color: white;
     margin: 0;
     justify-content: center;
@@ -39,7 +39,7 @@ p {
 .box {
     height: 75%;
     width: 20%;
-    background-color: rgb(225, 225, 218);
+    background-color:#D4F1F4;
     border: 1px solid black;
     padding: 3%;
     margin: 3%;
@@ -50,7 +50,7 @@ p {
     flex: 0.4;
     height: 50%;
     width: 85%;
-    background-color: rgb(225, 225, 218);
+    background-color:#D4F1F4;
     border: 1px solid black;
     padding: 3%;
     border-radius: 20px;
