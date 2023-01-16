@@ -6,4 +6,4 @@ This application is written in vanilla JavaScript. It is a application represent
 
 ## File structure
 
-All html code is in the file *index.html* and css is in the file *styles.css*. The JavaScript is devived into --ADD TEXT--
+All html code is in the file *index.html* and css is in the file *styles.css*. The JavaScript files is devived the same as the components, one for the bank logic *bank.js*, one file in charge of the work logic *work.js* och lastly one file *komputers.js* which handles the api call the logic concering the laptop purchesing. All the elements from the html file are put in a seperate file *elements.js* for convinience.

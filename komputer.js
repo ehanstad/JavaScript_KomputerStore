@@ -1,16 +1,9 @@
 /* This file handles all the logic for the laptop
  * presentation and buying features.
  */
-const computerSelectElement = document.getElementById("laptops");
-const computerFeaturesElement = document.getElementById("laptop-features");
-const computerFeaturesTextElement = document.getElementById("laptop-features-text");
-
-const computerInformationElement = document.getElementById("information-section");
-const computerImgElement = document.getElementById("laptop-img");
-const computerTitleElement = document.getElementById("laptop-title");
-const computerDescripitionElement = document.getElementById("laptop-discription");
-const computerPriceElement = document.getElementById("laptop-price");
-const buyBtnElement = document.getElementById("buy-btn");
+import { computerSelectElement, computerFeaturesElement, computerFeaturesTextElement, computerInformationElement, computerImgElement, computerTitleElement, computerDescripitionElement, computerPriceElement, buyBtnElement } from './elements.js';
+import { changeSalaryOnScreen } from './work.js';
+import { getCurrentBalance, changeBalance, changeBalanceOnScreen } from './bank.js';
 
 let computers = [];
 let selectedComputer = {};
@@ -42,7 +35,7 @@ const addComputersToInventory = (computers) => {
  * computer onto the screen
  */
 const changeSelectedComputerOnScreen = () => {
-    let imgSrc = "https://hickory-quilled-actress.glitch.me/" + selectedComputer.image;
+    let imgSrc = `https://hickory-quilled-actress.glitch.me/${selectedComputer.image}`;
     computerImgElement.src = imgSrc;
     computerTitleElement.innerText = selectedComputer.title;
     computerDescripitionElement.innerText = selectedComputer.description;
@@ -71,13 +64,13 @@ const handleBuyLaptop = () => {
         changeBalance(-laptopPrice);
         alert(`Congrats you are the owner of a ${laptopTitle}`);
     } else {
-        alert(`You do are too poor man`);
+        alert(`You do unluckily not afford a ${laptopTitle}`);
     }
 }
 /* Updates the features of the selected computer onto the
  * screen. 
  */
-const changeFeatures = selectedComputer =>  {
+const changeFeatures = selectedComputer => {
     let specs = "";
     selectedComputer.specs.map(spec => {
         specs = specs + spec + "\n";

@@ -1,36 +1,35 @@
 /* This file handles all the logic for the laptop
  * presentation and buying features.
  */
-const balanceElement = document.getElementById("balance");
-const getLoanElement = document.getElementById("loan-btn");
-const loanDebtElement = document.getElementById("loan-debt");
+import { balanceElement, getLoanElement, loanDebtElement } from './elements.js';
+import { toggleRepayLoanBtn } from './work.js'
 
 let currentBalance = 0.0;
 let currentLoanDebt = 0.0;
 
-const getLoanDebt = () => currentLoanDebt;
-const getCurrentBalance = () => currentBalance;
+export const getLoanDebt = () => currentLoanDebt;
+export const getCurrentBalance = () => currentBalance;
 
 /* Changes the local variable currentBalance and the 
  * balance amount on the screen by adding the difference 
  * paramenter to currentbalance.
  */
-const changeBalance = difference => {
+export const changeBalance = difference => {
     currentBalance += parseFloat(difference);;
     changeBalanceOnScreen();
 }
 
-const changeBalanceOnScreen = () => balanceElement.innerText = "Balance:\t" + currentBalance + " SEK";
-const changeDeptOnScreen = () => loanDebtElement.innerText = "Debt: " + currentLoanDebt + " SEK\n";
+export const changeBalanceOnScreen = () => balanceElement.innerText = `Balance:\t${currentBalance} SEK`;
+const changeDeptOnScreen = () => loanDebtElement.innerText = `Debt:\t${currentLoanDebt} SEK\n`;
 /* Changes the local variable newLoanDebt and the 
  * loan amount on the screen by setting it the 
  * newLoanDebt parameter.
  */
-const changeLoanDebt = newLoanDebt => {
+export const changeLoanDebt = newLoanDebt => {
     currentLoanDebt = newLoanDebt;
     changeDeptOnScreen();
     if (currentLoanDebt <= 0) {
-        loanDebtElement.style.display = "inline";
+        loanDebtElement.style.display = "none";
         toggleRepayLoanBtn();
     }
 }
@@ -43,8 +42,8 @@ const changeLoanDebt = newLoanDebt => {
  */
 const getLoanHandler = () => {
     let loanAmount = window.prompt('Please enter amount you would like to loan (SEK):');
-    
-    if (currentLoanDebt <= 0 && currentBalance * 2 >= loanAmount) {
+
+    if (currentLoanDebt <= 0 && currentBalance * 2 >= loanAmount && !loanAmount.isNaN && loanAmount > 0) {
         addLoan(loanAmount);
         changeBalance(loanAmount);
     } else {

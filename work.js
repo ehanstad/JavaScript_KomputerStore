@@ -1,11 +1,8 @@
 /* This file handles all the logic for all the work block
  * It includes the bank- and work button
  */
-
-const salaryElement = document.getElementById("salary");
-const bankBtnElement = document.getElementById("bank-btn");
-const workBtnElement = document.getElementById("work-btn");
-const repayLoanBtnElement = document.getElementById("repay-loan-btn");
+import { salaryElement, bankBtnElement, workBtnElement, repayLoanBtnElement } from './elements.js';
+import { getLoanDebt, changeBalance, changeLoanDebt } from './bank.js';
 
 let currentSalary = 0.0;
 
@@ -22,7 +19,7 @@ const handleBankTransfer = () => {
             currentSalary += (salaryToLoan - loanAmount);
             changeLoanDebt(0);
         } else {
-            changeLoanDebt(loanAmount-salaryToLoan)
+            changeLoanDebt(loanAmount - salaryToLoan)
         }
     }
     changeBalance(currentSalary);
@@ -47,7 +44,7 @@ const handleRepayLoan = () => {
         changeBalance(extra);
         changeLoanDebt(0);
     } else {
-        changeLoanDebt(loanAmount-currentSalary);
+        changeLoanDebt(loanAmount - currentSalary);
     }
     currentSalary = 0.0;
     changeSalaryOnScreen();
@@ -55,7 +52,7 @@ const handleRepayLoan = () => {
 /* This function will toggle the repay loan button be vissable or
  * hidden
  */
-const toggleRepayLoanBtn = () => {
+export const toggleRepayLoanBtn = () => {
     if (repayLoanBtnElement.style.display == "inline") {
         repayLoanBtnElement.style.display = "none";
     } else {
@@ -64,7 +61,7 @@ const toggleRepayLoanBtn = () => {
 }
 /* This function will update the salary amount on the screen
  */
-const changeSalaryOnScreen = () => salaryElement.innerText = "Pay:\t" + currentSalary + " SEK";
+export const changeSalaryOnScreen = () => salaryElement.innerText = `Pay:\t${currentSalary} SEK`;
 
 bankBtnElement.addEventListener("click", handleBankTransfer);
 workBtnElement.addEventListener("click", handleWorkPayment);
