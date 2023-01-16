@@ -57,9 +57,9 @@ const handleComputerInventoryChange = e => {
  * or not.
  */
 const handleBuyLaptop = () => {
-    currentBalance = getCurrentBalance();
-    laptopPrice = parseFloat(computerPriceElement.innerText.split(" ")[0]);
-    laptopTitle = computerTitleElement.innerText;
+    const currentBalance = getCurrentBalance();
+    const laptopPrice = parseFloat(computerPriceElement.innerText.split(" ")[0]);
+    const laptopTitle = computerTitleElement.innerText;
     if (currentBalance >= laptopPrice) {
         changeBalance(-laptopPrice);
         alert(`Congrats you are the owner of a ${laptopTitle}`);
